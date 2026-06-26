@@ -1,6 +1,0 @@
-@FlightManagment_Middle_AirAstana_HostAddress = http://localhost:5082
-
-GET {{FlightManagment_Middle_AirAstana_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
