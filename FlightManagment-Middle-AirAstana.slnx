@@ -2,5 +2,14 @@
   <Folder Name="/Solution Items/">
     <File Path="compose.yaml" />
   </Folder>
-  <Project Path="FlightManagment-Middle-AirAstana/FlightManagment-Middle-AirAstana.csproj" />
+  <Folder Name="/src/">
+    <Project Path="Api/Api.csproj" />
+    <Project Path="Application/Application.csproj" />
+    <Project Path="Domain/Domain.csproj" />
+    <Project Path="Infrastructure/Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="IntegrationTests/IntegrationTests.csproj" />
+    <Project Path="UnitTests/UnitTests.csproj" />
+  </Folder>
 </Solution>
