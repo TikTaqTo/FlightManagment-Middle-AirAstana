@@ -1,0 +1,6 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="compose.yaml" />
+  </Folder>
+  <Project Path="FlightManagment-Middle-AirAstana/FlightManagment-Middle-AirAstana.csproj" />
+</Solution>

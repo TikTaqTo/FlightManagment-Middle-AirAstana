@@ -1,0 +1,7 @@
+﻿services:
+  flightmanagment-middle-airastana:
+    image: flightmanagment-middle-airastana
+    build:
+      context: .
+      dockerfile: FlightManagment-Middle-AirAstana/Dockerfile
+
