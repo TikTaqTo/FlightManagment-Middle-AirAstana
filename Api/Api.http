@@ -1,6 +1,21 @@
 @Api_HostAddress = http://localhost:5233
 
-GET {{Api_HostAddress}}/weatherforecast/
+### Базовая инициализация
+
+GET {{Api_HostAddress}}/api/auth/baseInitialize
 Accept: application/json
+
+###
+
+### Логин
+
+POST {{Api_HostAddress}}/api/auth/login
+Content-Type: application/json
+Accept: application/json
+
+{
+  "username": "admin@demo.local",
+  "password": "P@ssw0rd!1"
+}
 
 ###

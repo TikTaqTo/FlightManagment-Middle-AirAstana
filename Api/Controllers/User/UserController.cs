@@ -1,14 +1,38 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Application.Abstractions;
+using Application.Models.Requests;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers.User;
 
 [ApiController]
-public class UserController : Controller
+public class UserController(IAuthService authService) : ControllerBase
 {
-    // POST /api/auth/login
     [HttpPost("/api/auth/login")]
-    public IActionResult Index()
+    public IActionResult Index(LoginRequest request)
     {
-        return View();
+        if (!ModelState.IsValid)
+        {
+            return ValidationProblem(ModelState);
+        }
+        
+        var response = authService.Login(request);
+        
+        if(response == null)
+            return NotFound(new ProblemDetails
+            {
+                Title = "User not found.",
+                Detail = "User not found, please check username and password.",
+                Status = StatusCodes.Status404NotFound
+            });
+        
+        return Ok(response);
+    }
+    
+    [HttpGet("/api/auth/baseInitialize")]
+    public IActionResult BaseInitialize()
+    {
+        var response = authService.FirstInitiazlie();
+        
+        return Ok(response);
     }
 }
