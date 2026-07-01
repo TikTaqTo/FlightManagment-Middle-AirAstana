@@ -1,4 +1,5 @@
 ﻿using Application.Abstractions;
+using Infrastructure.Database;
 using Infrastructure.Services;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -10,6 +11,7 @@ public static class DependencyInjection
         this IServiceCollection services)
     {
         services.AddScoped<IAuthService, AuthService>();
+        services.AddDbContext<ApplicationContext>();
 
         return services;
     }

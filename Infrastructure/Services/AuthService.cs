@@ -10,10 +10,10 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace Infrastructure.Services;
 
-public class AuthService : IAuthService
+public class AuthService(ApplicationContext dbContext) : IAuthService
 {
-    public ApplicationContext DbContext { get; }
-    
+    public ApplicationContext DbContext { get; set; } = dbContext;
+
     public LoginResponse? Login(LoginRequest request)
     {
         var currentUser = DbContext.Users.Include(user => user.Role)
