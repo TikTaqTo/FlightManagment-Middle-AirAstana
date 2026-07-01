@@ -1,6 +1,14 @@
+# Rider
+.idea/
+
+# Build
 bin/
 obj/
-/packages/
-riderModule.iml
-/_ReSharper.Caches/
-.idea/
+
+# User files
+*.user
+*.suo
+
+# ReSharper
+_ReSharper*/
+*.DotSettings.user
