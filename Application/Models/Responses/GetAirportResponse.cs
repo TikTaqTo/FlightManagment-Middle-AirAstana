@@ -1,6 +1,6 @@
-﻿namespace Application.Models.Requests;
+﻿namespace Application.Models.Responses;
 
-public class UpdateAirportRequest
+public class GetAirportResponse
 {
     public string Iata { get; set; }
     public string Name { get; set; }
