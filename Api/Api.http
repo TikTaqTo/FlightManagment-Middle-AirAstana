@@ -1,4 +1,5 @@
 @Api_HostAddress = http://localhost:5233
+@Api_AccessToken = test
 
 ### Базовая инициализация
 
@@ -17,5 +18,18 @@ Accept: application/json
   "username": "admin@demo.local",
   "password": "P@ssw0rd!1"
 }
+
+> {%
+    Api_AccessToken = response.body.accessToken
+    client.global.set("Api_AccessToken", response.body.accessToken);
+%}
+
+###
+
+### Аэропорты
+
+GET {{Api_HostAddress}}/api/airports
+Accept: application/json
+Authorization: Bearer {{Api_AccessToken}}
 
 ###

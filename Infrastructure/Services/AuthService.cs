@@ -16,16 +16,24 @@ public class AuthService(ApplicationContext dbContext) : IAuthService
 
     public LoginResponse? Login(LoginRequest request)
     {
-        var currentUser = DbContext.Users.Include(user => user.Role)
-            .FirstOrDefault(x => x.Username == request.username && x.Password == BCrypt.Net.BCrypt.HashPassword(request.password));
+        var currentUser = DbContext.Users
+            .Include(x => x.Role)
+            .FirstOrDefault(x => x.Username == request.username);
 
-        if (currentUser == null)
+        if (currentUser is null)
+        {
             return null;
+        }
+
+        if (!BCrypt.Net.BCrypt.Verify(request.password, currentUser.Password))
+        {
+            return null;
+        }
         
         var claims = new List<Claim>
         {
             new Claim(ClaimTypes.Name, currentUser.Username),
-            new Claim(ClaimTypes.Role, currentUser.Role?.Name  ?? "" ),
+            new Claim(ClaimTypes.Role, currentUser.Role?.Name ?? ""),
         };
         
         var jwt = new JwtSecurityToken(
@@ -33,7 +41,7 @@ public class AuthService(ApplicationContext dbContext) : IAuthService
             audience: "MyAuthClient",
             claims: claims,
             expires: DateTime.UtcNow.Add(TimeSpan.FromHours(1)),
-            signingCredentials: new SigningCredentials(new SymmetricSecurityKey("secretKey"u8.ToArray()), SecurityAlgorithms.HmacSha256));
+            signingCredentials: new SigningCredentials(new SymmetricSecurityKey("INeedMoreLetterForSecretKeeeeeeeeeeeey"u8.ToArray()), SecurityAlgorithms.HmacSha256));
         
         var handler = new JwtSecurityTokenHandler();
         
