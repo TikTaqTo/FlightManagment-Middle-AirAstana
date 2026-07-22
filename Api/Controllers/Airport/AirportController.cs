@@ -11,7 +11,7 @@ public class AirportController(IAirportService airportService) : ControllerBase
     // GET /api/airports?search=ala&page=1&size=20 — поиск по IATA/Name/City
     [HttpGet("/api/airports")]
     [Authorize]
-    public IActionResult Index([FromQuery] string? search,
+    public IActionResult GetAirports([FromQuery] string? search,
         [FromQuery] int page = 1,
         [FromQuery] int size = 20)
     {

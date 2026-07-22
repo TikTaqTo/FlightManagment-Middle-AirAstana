@@ -25,3 +25,10 @@ Accept: application/json
 GET {{Api_HostAddress}}/api/airports
 Accept: application/json
 Authorization: Bearer {{Api_AccessToken}}
+
+### Бронирование
+
+GET {{Api_HostAddress}}/api/bookings?flightId=,bookingStatus=1,bookingDate=
+Accept: application/json
+Authorization: Bearer {{Api_AccessToken}}
+

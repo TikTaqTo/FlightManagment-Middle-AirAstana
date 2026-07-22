@@ -32,7 +32,8 @@ public class AuthService(ApplicationContext dbContext) : IAuthService
         
         var claims = new List<Claim>
         {
-            new Claim(ClaimTypes.Name, currentUser.Username),
+            new Claim(ClaimTypes.NameIdentifier, currentUser.Id.ToString()),
+            new Claim(ClaimTypes.GivenName, currentUser.Username),
             new Claim(ClaimTypes.Role, currentUser.Role?.Name ?? ""),
         };
         

@@ -6,8 +6,8 @@ namespace Application.Abstractions;
 
 public interface IBookingService
 {
-    public bool CreateBooking(CreateBookingRequest request);
+    public bool CreateBooking(Guid userId, CreateBookingRequest request);
     public bool UpdateBooking(UpdateBookingRequest request);
-    public List<GetBookingsResponse> GetBookings(Guid flightId, BookingStatus status, DateTime bookingDate);
+    public List<GetBookingsResponse> GetBookings(Guid? flightId, BookingStatus? status, DateTime? bookingDate);
     public GetBookingsResponse GetBooking(Guid id);
 }

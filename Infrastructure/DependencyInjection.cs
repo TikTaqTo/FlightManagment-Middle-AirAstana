@@ -12,6 +12,7 @@ public static class DependencyInjection
     {
         services.AddScoped<IAuthService, AuthService>();
         services.AddScoped<IAirportService, AirportService>();
+        services.AddScoped<IBookingService, BookingService>();
         services.AddDbContext<ApplicationContext>();
 
         return services;
